@@ -1,21 +1,24 @@
 fn main() {
     
     let s = String::from("Hello World!How are!");
-    let word = first_word_index(&s);
+    let word = first_word_index(&s[..]);
     println!("The first word is: {word}");
 
     //s.clear();
     //println!("The first word is: {word}");
 
-    let word1 = first_word_slice(&s);
+    let word1 = first_word_slice(&s[..5]);
+    
     println!("The first word is: {word1}");
+    
 
-    let word2 = second_word_slice(&s);
+    let word2 = second_word_slice(&s[..5]);
     println!("The second word is: {word2}");
-
+    
+    array_slice();
 }
 
-fn first_word_index(s: &String) -> usize {
+fn first_word_index(s: &str) -> usize {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate(){
@@ -26,7 +29,7 @@ fn first_word_index(s: &String) -> usize {
     s.len()
 }
 
-fn first_word_slice(s: &String) -> &str {
+fn first_word_slice(s: &str) -> &str {
 
     let bytes = s.as_bytes();
     for (i, &item) in bytes.iter().enumerate(){
@@ -37,7 +40,7 @@ fn first_word_slice(s: &String) -> &str {
     &s[..]
 }
 
-fn second_word_slice(s: &String) -> &str {
+fn second_word_slice(s: &str) -> &str {
     let bytes = s.as_bytes();
     let mut first_space = false;
     let mut m = 0;
@@ -53,5 +56,12 @@ fn second_word_slice(s: &String) -> &str {
             }
         }
     }
-    &s[m+1..]
+    &s[n..]
+}
+
+fn array_slice() {
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+    assert_eq!(slice, &[2, 3]);
+    println!("slice: {:?}", slice);
 }
