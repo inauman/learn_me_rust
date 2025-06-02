@@ -30,6 +30,23 @@ fn main() {
     println!("user2 email: {}", user2.email);
     println!("user2 active: {}", user2.active);
     println!("user2 sign_in_count: {}", user2.sign_in_count);
+    println!("--------------------------------");
+
+   // create a new user with update feature
+   let user3 = User {
+    email: String::from("user3@example.com"),
+    ..user2
+   };
+
+   println!("user3 username: {}", user3.username);
+   println!("user3 email: {}", user3.email);
+   println!("user3 active: {}", user3.active);
+   println!("user3 sign_in_count: {}", user3.sign_in_count);
+   println!("--------------------------------");
+
+   // try to print the user2 username
+   println!("user2 active: {}", user2.email);
+
 }
 
 fn build_user(email: String, username: String) -> User {
