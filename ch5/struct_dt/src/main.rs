@@ -47,6 +47,8 @@ fn main() {
    // try to print the user2 username
    println!("user2 active: {}", user2.email);
 
+   tuple_structs();
+
 }
 
 fn build_user(email: String, username: String) -> User {
@@ -57,4 +59,18 @@ fn build_user(email: String, username: String) -> User {
         email,
         sign_in_count: 1,
     }
+}
+
+fn tuple_structs() {
+    struct Color(i32, i32, i32);
+    struct Point(i32, i32, i32);
+
+    let black = Color(0,0,0);
+    let origin = Point(10,20,30);
+
+    println!("black: {} - {} - {}", black.0, black.1, black.2);
+    println!("origin: {} - {} - {}", origin.0, origin.1, origin.2);
+    println!("--------------------------------");
+
+   
 }
