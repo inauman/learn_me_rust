@@ -72,5 +72,15 @@ fn tuple_structs() {
     println!("origin: {} - {} - {}", origin.0, origin.1, origin.2);
     println!("--------------------------------");
 
-   
+   // destructuring
+   let Point(x,y,z) = origin;
+   println!("x: {} - y: {} - z: {}", x,y,z);
+   println!("--------------------------------");
+
+   // destructuring with pattern matching
+   let Color(r,g,b) = black;
+   println!("r: {} - g: {} - b: {}", r,g,b);
+   println!("--------------------------------");
+
+   // destructuring with pattern matching
 }
