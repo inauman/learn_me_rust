@@ -5,6 +5,9 @@ struct User {
     sign_in_count: u64,
 }
 
+// unit structs
+struct AlwaysEqual;
+
 fn main() {
     let name = String::from("MN");
     let mut user1 = User {
@@ -48,6 +51,7 @@ fn main() {
    println!("user2 active: {}", user2.email);
 
    tuple_structs();
+   unit_structs();
 
 }
 
@@ -83,4 +87,9 @@ fn tuple_structs() {
    println!("--------------------------------");
 
    // destructuring with pattern matching
+}
+
+// unit structs
+fn unit_structs() {
+    let subject = AlwaysEqual;
 }
