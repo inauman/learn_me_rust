@@ -28,6 +28,15 @@ fn value_in_cents(coin: Coin) -> u8 {
     }
 }
 
+fn penny_count(coin: Coin) -> u8 {
+    let mut count = 0;
+    match coin {
+        Coin::Quarter(state) => println!("State quarter from {:?}!", state),
+        _ => count += 1,
+    }
+    count
+}
+
 fn plus_one(x: Option<i32>) -> Option<i32> {
     match x {
         None => None,
@@ -61,6 +70,10 @@ fn move_player(num_spaces: u8) {
 fn main() {
     let coin = Coin::Quarter(UsState::Alaska);
     println!("It's worth {} cents!", value_in_cents(coin));
+
+    let coin = Coin::Dime;
+    let penny_count = penny_count(coin);
+    println!("penny_count: {}", penny_count);
 
     let five = Some(5);
     let six = plus_one(five);
