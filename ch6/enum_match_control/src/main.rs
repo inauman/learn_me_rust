@@ -16,7 +16,6 @@ enum Coin {
     Quarter(UsState),
 }
 
-
 fn value_in_cents(coin: Coin) -> u8 {
     match coin {
         Coin::Penny => 1,
@@ -25,13 +24,50 @@ fn value_in_cents(coin: Coin) -> u8 {
         Coin::Quarter(state) => {
             println!("State quarter from {:?}!", state);
             25
-        },
+        }
     }
 }
 
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}
+
+fn dice_roll_fn() {
+    let dice_roll = 7;
+
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        //other => move_player(other),
+        _ => (),
+    }
+}
+
+fn add_fancy_hat() {
+    println!("Adding fancy hat");
+}
+
+fn remove_fancy_hat() {
+    println!("Removing fancy hat");
+}
+
+fn move_player(num_spaces: u8) {
+    println!("Moving {} spaces", num_spaces);
+}
 
 fn main() {
-    
     let coin = Coin::Quarter(UsState::Alaska);
     println!("It's worth {} cents!", value_in_cents(coin));
+
+    let five = Some(5);
+    let six = plus_one(five);
+    println!("six: {:?}", six);
+
+    let none = plus_one(None);
+    println!("none: {:?}", none);
+
+    dice_roll_fn();
 }
