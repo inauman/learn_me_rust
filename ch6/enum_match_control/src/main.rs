@@ -79,11 +79,40 @@ fn describe_state_quarter(coin: Coin) -> Option<String> {
             Some(format!("{state:?} is pretty old for America!"))
         }
         else {
-            Some(format!("{state:?} is pretty new for America!"))
+            Some(format!("{state:?} is relatively new!"))
         }
     }
     else {
         None
+    }
+}
+
+fn describe_state_quarter_v2(coin: Coin) -> Option<String> {
+    let state = if let Coin::Quarter(state) = coin {
+        state
+    }
+    else {
+        return None;
+    };
+
+    if state.existed_in(1900) {
+        Some(format!("{state:?} is pretty old for America!"))
+    }
+    else {
+        Some(format!("{state:?} is relatively new!"))
+    }
+}
+
+fn describe_state_quarter_v3(coin: Coin) -> Option<String> {
+    let Coin::Quarter(state) = coin else {
+        return None;
+    };
+
+    if state.existed_in(1900) {
+        Some(format!("{state:?} is pretty old for America!"))
+    }
+    else {
+        Some(format!("{state:?} is relatively new!"))
     }
 }
 fn main() {
