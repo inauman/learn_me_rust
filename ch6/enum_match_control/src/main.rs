@@ -1,12 +1,18 @@
 #[derive(Debug)]
 
 enum UsState {
-    Alabama,
     Alaska,
-    Arizona,
-    Arkansas,
-    California,
-    Colorado,
+    Alabama,
+
+}
+
+impl UsState {
+    fn existed_in(&self, year: i16) -> bool {
+        match self {
+            UsState::Alabama => year >= 1861,
+            _ => false,
+        }
+    }
 }
 
 enum Coin {
@@ -67,6 +73,19 @@ fn move_player(num_spaces: u8) {
     println!("Moving {} spaces", num_spaces);
 }
 
+fn describe_state_quarter(coin: Coin) -> Option<String> {
+    if let Coin::Quarter(state) = coin {
+        if state.existed_in(1999) {
+            Some(format!("{state:?} is pretty old for America!"))
+        }
+        else {
+            Some(format!("{state:?} is pretty new for America!"))
+        }
+    }
+    else {
+        None
+    }
+}
 fn main() {
     let coin = Coin::Quarter(UsState::Alaska);
     println!("It's worth {} cents!", value_in_cents(coin));
