@@ -1,21 +1,6 @@
 use std::collections::HashMap;
-fn main() {
-    println!("\n--------------------------------");
-    let median = exercise_1_median();
-    match median {
-        Some(m) => println!("Median: {:?}", m),
-        None => println!("No median"),
-    }
-    println!("--------------------------------");
 
-    let mode = exercise_1_mode();
-    match mode {
-        Some(m) => println!("Mode: {:?}", m),
-        None => println!("No mode"),
-    }
-}
-
-fn exercise_1_median() -> Option<f64> {
+pub fn exercise_1_median() -> Option<f64> {
     //let mut v: Vec<i32> = vec![];
     //let mut v: Vec<i32> = vec![3, 2, 1, 5, 4];
     let mut v: Vec<i32> = vec![3, 2, 1, 5, 4, 6];
@@ -35,8 +20,8 @@ fn exercise_1_median() -> Option<f64> {
     median
 }
 
-fn exercise_1_mode() -> Option<i32> {
-    let mut v: Vec<i32> = vec![1, 2, 2, 3, 3, 3, 4, 4, 1, 1, 5, 6, 1, 7, 1, 1];
+pub fn exercise_1_mode() -> Option<i32> {
+    let v: Vec<i32> = vec![1, 2, 2, 3, 3, 3, 4, 4, 1, 1, 5, 6, 1, 7, 1, 1];
     let mut counts = HashMap::new();
 
     for &value in &v {
