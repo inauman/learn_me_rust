@@ -21,17 +21,17 @@ pub fn exercise_2() -> String {
     let mut pig_latin_words = Vec::new();
     //convert each word to pig latin
     for word in words {
-       let mut chars = word.chars();
+        let mut chars = word.chars();
 
-       if let Some(first_char) = chars.next() {
-        let rest: String = chars.collect();
-        let pig_word = if is_vowel(first_char) {
-            format!("{}-hay", word.to_lowercase())
-        } else {
-            format!("{}-{}ay", rest.to_lowercase(), first_char.to_lowercase())
-        };
-        pig_latin_words.push(pig_word);
-       }
+        if let Some(first_char) = chars.next() {
+            let rest: String = chars.collect();
+            let pig_word = if is_vowel(first_char) {
+                format!("{}-hay", word.to_lowercase())
+            } else {
+                format!("{}-{}ay", rest.to_lowercase(), first_char.to_lowercase())
+            };
+            pig_latin_words.push(pig_word);
+        }
     }
     pig_latin_words.join(" ")
 }
