@@ -37,7 +37,6 @@ impl Company {
             let mut sorted = employees.clone();
             sorted.sort();
             all.insert(dept.clone(), sorted);
-            
         }
         all
     }
