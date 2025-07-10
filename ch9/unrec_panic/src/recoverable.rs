@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io::{self, Read,Error, ErrorKind};
 
 pub fn test_recoverable_v1_match() {
     let greeting_file_result = File::open("hello.txt");
@@ -15,7 +15,6 @@ pub fn test_recoverable_v1_match() {
                 panic!("Problem opening the file: {:?}", error);
             }
         },
-     
     };
 }
 
@@ -32,5 +31,20 @@ pub fn test_recoverable_v2_closure() {
 }
 
 pub fn test_recoverable_v3_unwrap() {
-    let greeting_file = File::open("hello.txt").unwrap();
+    let greeting_file =
+        File::open("hello.txt").expect("\nhello.txt should be included in this project.\n\n");
+}
+
+pub fn read_username_from_file() -> Result<String, io::Error> {
+    let username_file_result = File::open("username.txt");
+    let mut username_file = match username_file_result {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };  
+
+    let mut username = String::new();
+    match username_file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),
+        Err(e) => Err(e),
+    }
 }
