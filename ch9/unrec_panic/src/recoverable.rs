@@ -35,7 +35,7 @@ pub fn test_recoverable_v3_unwrap() {
         File::open("hello.txt").expect("\nhello.txt should be included in this project.\n\n");
 }
 
-pub fn read_username_from_file() -> Result<String, io::Error> {
+pub fn read_username_from_file_v1() -> Result<String, io::Error> {
     let username_file_result = File::open("username.txt");
     let mut username_file = match username_file_result {
         Ok(file) => file,
@@ -48,3 +48,11 @@ pub fn read_username_from_file() -> Result<String, io::Error> {
         Err(e) => Err(e),
     }
 }
+
+pub fn read_username_from_file() -> Result<String, io::Error> {
+    let mut username_file = File::open("username.txt")?;
+    let mut username = String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username)
+}
+
