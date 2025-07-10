@@ -30,3 +30,7 @@ pub fn test_recoverable_v2_closure() {
         }
     });
 }
+
+pub fn test_recoverable_v3_unwrap() {
+    let greeting_file = File::open("hello.txt").unwrap();
+}
