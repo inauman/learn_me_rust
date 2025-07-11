@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::{self, Read,Error, ErrorKind};
 
 pub fn test_recoverable_v1_match() {
@@ -56,8 +56,12 @@ pub fn read_username_from_file_v2() -> Result<String, io::Error> {
     Ok(username)
 }
 
-pub fn read_username_from_file() -> Result<String, io::Error> {
+pub fn read_username_from_file_v4() -> Result<String, io::Error> {
     let mut username = String::new();
     File::open("username.txt")?.read_to_string(&mut username)?;
     Ok(username)
+}
+
+pub fn read_username_from_file() -> Result<String, io::Error> {
+    fs::read_to_string("username.txt")
 }
